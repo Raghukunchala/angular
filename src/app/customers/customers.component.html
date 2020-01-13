@@ -1,0 +1,39 @@
+<filter-textbox (changed)="filter($event)"></filter-textbox>
+
+<br />
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th (click)="sort('name')">id</th>
+            <th (click)="sort('name')">Name</th>
+            <th (click)="sort('name')">Email</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let each of filteredCustomers">
+        <td>
+            {{each.id}}
+        </td>
+        <td>
+            <a>
+                {{each.name | capitalize }} 
+ 
+                 </a>
+        </td>
+        <td>{{each.email}}</td>
+    </tr>
+    <tr *ngIf="filteredCustomers">
+        <td colspan="1">&nbsp;</td>
+
+        <th colspan="1">&nbsp; Total</th>
+        <td>
+            {{ customersOrderTotal | currency}}
+        </td>
+    </tr>
+    <tr *ngIf="!filteredCustomers || !filteredCustomers.length == 0">
+        <td colspan="4">No customers found</td>
+    </tr>
+</table>
+Number of Customers: {{filteredCustomers.length}}
+<br />
+
